@@ -18,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} prose dark:prose-invert`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <main className="p-4">{children}</main>
+        </Providers>
       </body>
     </html>
   );

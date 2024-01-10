@@ -1,12 +1,14 @@
 import type { Config } from "tailwindcss";
 
 import typographyPlugin from "@tailwindcss/typography";
+import { nextui } from "@nextui-org/react";
 
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -17,6 +19,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [typographyPlugin],
+  darkMode: "class",
+  plugins: [typographyPlugin, nextui()],
 };
 export default config;

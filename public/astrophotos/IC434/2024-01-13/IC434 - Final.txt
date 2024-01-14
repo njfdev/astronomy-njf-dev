@@ -1,0 +1,219 @@
+{
+  "SIMPLE": [
+    "T",
+    "file does conform to FITS standard"
+  ],
+  "BITPIX": [
+    "-32",
+    "number of bits per data pixel"
+  ],
+  "NAXIS": [
+    "3",
+    "number of data axes"
+  ],
+  "NAXIS1": [
+    "788",
+    "length of data axis 1"
+  ],
+  "NAXIS2": [
+    "1332",
+    "length of data axis 2"
+  ],
+  "NAXIS3": [
+    "3",
+    "length of data axis 3"
+  ],
+  "EXTEND": [
+    "T",
+    "FITS dataset may contain extensions"
+  ],
+  "COMMENT": "and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H",
+  "MIPS-FHI": [
+    "1.",
+    "Upper visualization cutoff"
+  ],
+  "MIPS-FLO": [
+    "0.",
+    "Lower visualization cutoff"
+  ],
+  "BZERO": [
+    "0.",
+    "offset data range to that of unsigned short"
+  ],
+  "BSCALE": [
+    "1.",
+    "default scaling factor"
+  ],
+  "ROWORDER": [
+    "'TOP-DOWN'",
+    "Order of the rows in image array"
+  ],
+  "INSTRUME": [
+    "'Seestar S50'",
+    "instrument name"
+  ],
+  "TELESCOP": [
+    "'Seestar S50'",
+    "telescope used to acquire this image"
+  ],
+  "DATE": [
+    "'2024-01-14T16:39:12'",
+    "UTC date that FITS file was created"
+  ],
+  "DATE-OBS": [
+    "'2024-01-13T23:44:38.173085'",
+    "YYYY-MM-DDThh:mm:ss observation start,"
+  ],
+  "STACKCNT": [
+    "396",
+    "Stack frames"
+  ],
+  "EXPTIME": [
+    "10.",
+    "Exposure time [s]"
+  ],
+  "LIVETIME": [
+    "3960.",
+    "Exposure time after deadtime correction"
+  ],
+  "EXPSTART": [
+    "2460320.",
+    "Exposure start time (standard Julian date)"
+  ],
+  "EXPEND": [
+    "2460323.63760451",
+    "Exposure end time (standard Julian date)"
+  ],
+  "XPIXSZ": [
+    "2.9",
+    "X pixel size microns"
+  ],
+  "YPIXSZ": [
+    "2.9",
+    "Y pixel size microns"
+  ],
+  "XBINNING": [
+    "1",
+    "Camera binning mode"
+  ],
+  "YBINNING": [
+    "1",
+    "Camera binning mode"
+  ],
+  "FOCALLEN": [
+    "251.606",
+    "Camera focal length"
+  ],
+  "CCD-TEMP": [
+    "19.125",
+    "CCD temp in C"
+  ],
+  "FILTER": [
+    "'mixed   '",
+    "Active filter name"
+  ],
+  "IMAGETYP": [
+    "'Light   '",
+    "Type of image"
+  ],
+  "OBJECT": [
+    "'IC 434  '",
+    "Name of the object of interest"
+  ],
+  "GAIN": [
+    "80",
+    "Camera gain"
+  ],
+  "SITELAT": [
+    "35.6406",
+    "[deg] Observation site latitude"
+  ],
+  "SITELONG": [
+    "-78.7481",
+    "[deg] Observation site longitude"
+  ],
+  "PROGRAM": [
+    "'Siril v1.2.0'",
+    "Software that created this HDU"
+  ],
+  "CTYPE1": [
+    "'RA---TAN'",
+    "Coordinate type for the first axis"
+  ],
+  "CTYPE2": [
+    "'DEC--TAN'",
+    "Coordinate type for the second axis"
+  ],
+  "CUNIT1": [
+    "'deg     '",
+    "Unit of coordinates"
+  ],
+  "CUNIT2": [
+    "'deg     '",
+    "Unit of coordinates"
+  ],
+  "EQUINOX": [
+    "2000.",
+    "Equatorial equinox"
+  ],
+  "OBJCTRA": [
+    "'05 41 9.126'",
+    "Image center Right Ascension (hms)"
+  ],
+  "OBJCTDEC": [
+    "'-02 26 27.552'",
+    "Image center Declination (dms)"
+  ],
+  "RA": [
+    "85.2880253336913",
+    "Image center Right Ascension (deg)"
+  ],
+  "DEC": [
+    "-2.44098676312774",
+    "Image center Declination (deg)"
+  ],
+  "CRPIX1": [
+    "364.",
+    "Axis1 reference pixel"
+  ],
+  "CRPIX2": [
+    "688.",
+    "Axis2 reference pixel"
+  ],
+  "CRVAL1": [
+    "85.2880253336913",
+    "Axis1 reference value (deg)"
+  ],
+  "CRVAL2": [
+    "-2.44098676312774",
+    "Axis2 reference value (deg)"
+  ],
+  "CDELT1": [
+    "-0.000660069381186096",
+    "X pixel size (deg)"
+  ],
+  "CDELT2": [
+    "0.000660708049634078",
+    "Y pixel size (deg)"
+  ],
+  "PC1_1": [
+    "0.652900398967169",
+    "Linear transformation matrix (1, 1)"
+  ],
+  "PC1_2": [
+    "0.758190230701033",
+    "Linear transformation matrix (1, 2)"
+  ],
+  "PC2_1": [
+    "-0.756711595545022",
+    "Linear transformation matrix (2, 1)"
+  ],
+  "PC2_2": [
+    "0.652884668562382",
+    "Linear transformation matrix (2, 2)"
+  ],
+  "PLTSOLVD": [
+    "T",
+    "Siril internal solver"
+  ]
+}

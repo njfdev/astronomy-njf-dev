@@ -32,7 +32,7 @@ function processFile(filePath, fileName) {
     const outputFileName = path.basename(filePath, path.extname(filePath));
     const outputFilePath = path.join(
       path.dirname(filePath),
-      `${outputFileName}.txt`
+      `${outputFileName}.json`
     );
     fs.writeFileSync(outputFilePath, headerStr);
     console.log(`Header extracted for ${fileName}`);

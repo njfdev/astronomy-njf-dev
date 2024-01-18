@@ -4,15 +4,18 @@ import { removeOuterQuotes } from "@/utils/textTransformations";
 import { formatDuration } from "@/utils/timeTransformations";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
+import NextLink from "next/link";
 import { use, useEffect, useState } from "react";
 import moment from "moment-timezone";
 
 export default function PhotoCard({
   children,
   pictureFolder,
+  pageUrl,
 }: {
   children: React.ReactNode;
   pictureFolder: string;
+  pageUrl?: string;
 }) {
   const [pictureDateString, setPictureDateString] = useState<string>("");
 
@@ -61,7 +64,14 @@ export default function PhotoCard({
   }, [pictureDate, timeIsSpecified]);
 
   return (
-    <Card className="h-[36rem] px-2">
+    <Card
+      as={pageUrl ? NextLink : undefined}
+      href={pageUrl}
+      isPressable={!!pageUrl}
+      className={`h-[36rem] px-2 ${
+        pageUrl ? "hover:decoration-inherit decoration-transparent" : ""
+      }`}
+    >
       <CardHeader className="pb-0 pt-2 flex flex-col">
         <h2 className="text-2xl font-bold text-center w-full mb-0 mt-8">
           {objectReadableName

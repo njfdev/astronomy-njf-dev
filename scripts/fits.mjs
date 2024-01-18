@@ -18,6 +18,11 @@ export function readFITSHeader(filePath) {
 
   headerLines.forEach((line) => {
     const key = line.slice(0, 8).trim();
+
+    if (key === "SITELAT" || key === "SITELONG") {
+      return;
+    }
+
     const value = line.slice(10).trim();
 
     // split value it it contains a /

@@ -1,0 +1,8 @@
+{
+  "INSTRUME": ["'Seestar S50'", "instrument name"],
+  "TELESCOP": ["'Seestar S50'", "telescope used to acquire this image"],
+  "DATE-OBS": [
+    "'2024-01-17T18:03:30.000000-5:00'",
+    "YYYY-MM-DDThh:mm:ss observation start,"
+  ]
+}

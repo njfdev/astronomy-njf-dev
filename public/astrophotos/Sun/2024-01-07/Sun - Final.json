@@ -1,56 +1,17 @@
 {
-  "SIMPLE": [
-    "T",
-    "file does conform to FITS standard"
-  ],
-  "BITPIX": [
-    "-32",
-    "number of bits per data pixel"
-  ],
-  "NAXIS": [
-    "3",
-    "number of data axes"
-  ],
-  "NAXIS1": [
-    "1080",
-    "length of data axis 1"
-  ],
-  "NAXIS2": [
-    "1920",
-    "length of data axis 2"
-  ],
-  "NAXIS3": [
-    "3",
-    "length of data axis 3"
-  ],
-  "EXTEND": [
-    "T",
-    "FITS dataset may contain extensions"
-  ],
+  "SIMPLE": ["T", "file does conform to FITS standard"],
+  "BITPIX": ["-32", "number of bits per data pixel"],
+  "NAXIS": ["3", "number of data axes"],
+  "NAXIS1": ["1080", "length of data axis 1"],
+  "NAXIS2": ["1920", "length of data axis 2"],
+  "NAXIS3": ["3", "length of data axis 3"],
+  "EXTEND": ["T", "FITS dataset may contain extensions"],
   "COMMENT": "and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H",
-  "BZERO": [
-    "0.",
-    "offset data range to that of unsigned short"
-  ],
-  "BSCALE": [
-    "1.",
-    "default scaling factor"
-  ],
-  "DATE": [
-    "'2024-01-08T23:05:43'",
-    "UTC date that FITS file was created"
-  ],
-  "STACKCNT": [
-    "5937",
-    "Stack frames"
-  ],
-  "CCD-TEMP": [
-    "0.",
-    "CCD temp in C"
-  ],
-  "PROGRAM": [
-    "'Siril v1.2.0'",
-    "Software that created this HDU"
-  ],
+  "BZERO": ["0.", "offset data range to that of unsigned short"],
+  "BSCALE": ["1.", "default scaling factor"],
+  "DATE": ["'2024-01-08T23:05:43'", "UTC date that FITS file was created"],
+  "STACKCNT": ["5937", "Stack frames"],
+  "CCD-TEMP": ["0.", "CCD temp in C"],
+  "PROGRAM": ["'Siril v1.2.0'", "Software that created this HDU"],
   "HISTORY": "o image weighting, unequalized RGB"
 }

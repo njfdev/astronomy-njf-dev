@@ -15,7 +15,9 @@ export default function ClientImage({
   className?: string;
   parentClassName?: string;
 }) {
-  return <div className={`object-cover relative ${parentClassName}`}>
-    <Image src={src} alt={alt} fill={fill} className={className} />
-  </div>;
+  return (
+    <div className={`object-cover relative ${parentClassName} mb-12`}>
+      <Image src={src} alt={alt} fill={fill} className={className} />
+    </div>
+  );
 }

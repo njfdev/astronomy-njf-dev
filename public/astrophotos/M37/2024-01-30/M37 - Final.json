@@ -1,0 +1,128 @@
+{
+  "SIMPLE": [
+    "T",
+    "file does conform to FITS standard"
+  ],
+  "BITPIX": [
+    "-32",
+    "number of bits per data pixel"
+  ],
+  "NAXIS": [
+    "3",
+    "number of data axes"
+  ],
+  "NAXIS1": [
+    "2160",
+    "length of data axis 1"
+  ],
+  "NAXIS2": [
+    "3840",
+    "length of data axis 2"
+  ],
+  "NAXIS3": [
+    "3",
+    "length of data axis 3"
+  ],
+  "EXTEND": [
+    "T",
+    "FITS dataset may contain extensions"
+  ],
+  "COMMENT": "and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H",
+  "BZERO": [
+    "0.",
+    "offset data range to that of unsigned short"
+  ],
+  "BSCALE": [
+    "1.",
+    "default scaling factor"
+  ],
+  "INSTRUME": [
+    "'Seestar S50'",
+    "instrument name"
+  ],
+  "TELESCOP": [
+    "'Seestar S50'",
+    "telescope used to acquire this image"
+  ],
+  "DATE": [
+    "'2024-02-04T02:00:57'",
+    "UTC date that FITS file was created"
+  ],
+  "DATE-OBS": [
+    "'2024-01-31T00:13:49.605047'",
+    "YYYY-MM-DDThh:mm:ss observation start,"
+  ],
+  "STACKCNT": [
+    "46",
+    "Stack frames"
+  ],
+  "EXPTIME": [
+    "10.",
+    "Exposure time [s]"
+  ],
+  "LIVETIME": [
+    "460.",
+    "Exposure time after deadtime correction"
+  ],
+  "EXPSTART": [
+    "2460340.50960191",
+    "Exposure start time (standard Julian date)"
+  ],
+  "EXPEND": [
+    "2460340.52034655",
+    "Exposure end time (standard Julian date)"
+  ],
+  "XPIXSZ": [
+    "1.45",
+    "X pixel size microns"
+  ],
+  "YPIXSZ": [
+    "1.45",
+    "Y pixel size microns"
+  ],
+  "XBINNING": [
+    "1",
+    "Camera binning mode"
+  ],
+  "YBINNING": [
+    "1",
+    "Camera binning mode"
+  ],
+  "FOCALLEN": [
+    "250.",
+    "Camera focal length"
+  ],
+  "CCD-TEMP": [
+    "24.625",
+    "CCD temp in C"
+  ],
+  "FILTER": [
+    "'IRCUT   '",
+    "Active filter name"
+  ],
+  "IMAGETYP": [
+    "'Light   '",
+    "Type of image"
+  ],
+  "OBJECT": [
+    "'M 37    '",
+    "Name of the object of interest"
+  ],
+  "GAIN": [
+    "80",
+    "Camera gain"
+  ],
+  "PROGRAM": [
+    "'Siril v1.2.1'",
+    "Software that created this HDU"
+  ],
+  "RA": [
+    "88.4625",
+    "Image center Right Ascension (deg)"
+  ],
+  "DEC": [
+    "32.587778",
+    "Image center Declination (deg)"
+  ],
+  "HISTORY": "hting, unequalized RGB"
+}

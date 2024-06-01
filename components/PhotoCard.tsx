@@ -33,6 +33,14 @@ export default function PhotoCard({
   if (photoData["DATE-OBS"]) {
     const dateObs = removeOuterQuotes(photoData["DATE-OBS"]?.[0]);
     const dateObsUTC = new Date(dateObs + "Z");
+    console.log(dateObs);
+    console.log(
+      dateObsUTC.toLocaleDateString("en-US", { timeZone: "America/New_York" })
+    );
+    console.log(folderDate);
+    console.log(
+      folderDate.toLocaleDateString("en-US", { timeZone: "America/New_York" })
+    );
     if (
       dateObsUTC.toLocaleDateString("en-US", {
         timeZone: "America/New_York",

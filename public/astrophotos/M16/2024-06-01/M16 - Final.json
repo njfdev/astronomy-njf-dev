@@ -17,7 +17,7 @@
     "'2024-06-01T8:11:00.000000'",
     "YYYY-MM-DDThh:mm:ss observation start,"
   ],
-  "TELESCOP": ["'Lumix S5IIX'", "Telescope"],
+  "TELESCOP": ["'Lumix S5IIX with SVBony 70ED'", "Telescope"],
   "STACKCNT": ["344", "Stack frames"],
   "EXPSTART": ["2460460.", "Exposure start time (standard Julian date)"],
   "EXPEND": ["2460462.92607639", "Exposure end time (standard Julian date)"],

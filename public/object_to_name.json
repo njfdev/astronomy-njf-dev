@@ -2,6 +2,7 @@
   "M1": "Crab Nebula",
   "M14": "Globular Cluster",
   "M16": "Eagle Nebula",
+  "M27": "Dumbbell Nebula",
   "M31": "Andromeda Galaxy",
   "M33": "Triangulum Galaxy",
   "M34": "Spiral Cluster",
@@ -9,6 +10,7 @@
   "M37": "Salt and Pepper Cluster",
   "M42": "Orion Nebula",
   "M45": "Pleiades Cluster",
+  "M66 Group": "Leo Triplet",
   "M77": "Squid Galaxy",
   "M94": "Croc's Eye Galaxy",
   "M100": "Grand Spiral Galaxy",
@@ -20,5 +22,6 @@
   "NGC1499": "California Nebula",
   "NGC1579": "Northern Trifid Nebula",
   "NGC2175": "Monkey Head Nebula",
+  "NGC6960": "Western Veil Nebula",
   "SH2-275": "Rosette Nebula"
 }

@@ -1,0 +1,163 @@
+{
+  "SIMPLE": [
+    "T",
+    "file does conform to FITS standard"
+  ],
+  "BITPIX": [
+    "-32",
+    "number of bits per data pixel"
+  ],
+  "NAXIS": [
+    "3",
+    "number of data axes"
+  ],
+  "NAXIS1": [
+    "1080",
+    "length of data axis 1"
+  ],
+  "NAXIS2": [
+    "1920",
+    "length of data axis 2"
+  ],
+  "NAXIS3": [
+    "3",
+    "length of data axis 3"
+  ],
+  "EXTEND": [
+    "T",
+    "FITS dataset may contain extensions"
+  ],
+  "COMMENT": "and Astrophysics', volume 376, page 359; bibcode: 2001A&A...376..359H",
+  "MIPS-FHI": [
+    "1.",
+    "Upper visualization cutoff"
+  ],
+  "MIPS-FLO": [
+    "0.",
+    "Lower visualization cutoff"
+  ],
+  "BZERO": [
+    "0.",
+    "offset data range to that of unsigned short"
+  ],
+  "BSCALE": [
+    "1.",
+    "default scaling factor"
+  ],
+  "DATE": [
+    "'2024-06-16T19:33:53'",
+    "UTC date that FITS file was created"
+  ],
+  "STACKCNT": [
+    "288",
+    "Stack frames"
+  ],
+  "EXPTIME": [
+    "5.",
+    "Exposure time [s]"
+  ],
+  "LIVETIME": [
+    "2880.",
+    "Exposure time after deadtime correction"
+  ],
+  "EXPEND": [
+    "2460329.69954154",
+    "Exposure end time (standard Julian date)"
+  ],
+  "XBINNING": [
+    "1",
+    "Camera binning mode"
+  ],
+  "YBINNING": [
+    "1",
+    "Camera binning mode"
+  ],
+  "FILTER": [
+    "'mixed   '",
+    "Active filter name"
+  ],
+  "PROGRAM": [
+    "'Siril v1.2.1'",
+    "Software that created this HDU"
+  ],
+  "CTYPE1": [
+    "'RA---TAN'",
+    "Coordinate type for the first axis"
+  ],
+  "CTYPE2": [
+    "'DEC--TAN'",
+    "Coordinate type for the second axis"
+  ],
+  "CUNIT1": [
+    "'deg     '",
+    "Unit of coordinates"
+  ],
+  "CUNIT2": [
+    "'deg     '",
+    "Unit of coordinates"
+  ],
+  "EQUINOX": [
+    "2000.",
+    "Equatorial equinox"
+  ],
+  "OBJCTRA": [
+    "'06 17 24.161'",
+    "Image center Right Ascension (hms)"
+  ],
+  "OBJCTDEC": [
+    "'+22 36 9.475'",
+    "Image center Declination (dms)"
+  ],
+  "RA": [
+    "94.3506710356141",
+    "Image center Right Ascension (deg)"
+  ],
+  "DEC": [
+    "22.6026319487377",
+    "Image center Declination (deg)"
+  ],
+  "CRPIX1": [
+    "540.",
+    "Axis1 reference pixel"
+  ],
+  "CRPIX2": [
+    "960.",
+    "Axis2 reference pixel"
+  ],
+  "CRVAL1": [
+    "94.3506710356141",
+    "Axis1 reference value (deg)"
+  ],
+  "CRVAL2": [
+    "22.6026319487377",
+    "Axis2 reference value (deg)"
+  ],
+  "CDELT1": [
+    "-0.000660361477802419",
+    "X pixel size (deg)"
+  ],
+  "CDELT2": [
+    "0.000660333783746544",
+    "Y pixel size (deg)"
+  ],
+  "PC1_1": [
+    "0.758110152684841",
+    "Linear transformation matrix (1, 1)"
+  ],
+  "PC1_2": [
+    "0.652131146136926",
+    "Linear transformation matrix (1, 2)"
+  ],
+  "PC2_1": [
+    "-0.652153868550804",
+    "Linear transformation matrix (2, 1)"
+  ],
+  "PC2_2": [
+    "0.75808264448032",
+    "Linear transformation matrix (2, 2)"
+  ],
+  "PLTSOLVD": [
+    "T",
+    "Siril internal solver"
+  ]
+}

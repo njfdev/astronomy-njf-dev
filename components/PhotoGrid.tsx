@@ -72,6 +72,8 @@ export default function PhotoGrid({
           label="Sort"
           selectedKeys={[filteringOptions.sortOption]}
           onChange={(e) => {
+            if (!e.target.value) return;
+
             setFilteringOptions({
               ...filteringOptions,
               sortOption: e.target.value as SortOption,

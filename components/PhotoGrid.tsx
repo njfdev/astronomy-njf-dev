@@ -1,7 +1,12 @@
 "use client";
 
 import PhotoCard from "@/components/PhotoCard";
-import { DateRangePicker, Select, SelectItem } from "@nextui-org/react";
+import {
+  CalendarDate,
+  DateRangePicker,
+  Select,
+  SelectItem,
+} from "@nextui-org/react";
 import {
   Catalog,
   FilteringOptions,
@@ -13,6 +18,7 @@ import moment from "moment-timezone";
 import { removeOuterQuotes } from "@/utils/textTransformations";
 import { PhotoDetails } from "@/types/metadata";
 import { objectInfo } from "@/utils/objectInfo";
+import { parseDate } from "@internationalized/date";
 
 interface PictureData {
   folder: string;
@@ -47,6 +53,24 @@ export default function PhotoGrid({
       newFiltering = newFiltering.filter((value, _index, _array) => {
         return filteringOptions.objectTypes.includes(
           value.photoDetails?.objectDetails.objectType!
+        );
+      });
+    }
+
+    if (filteringOptions.dateRangeStart) {
+      newFiltering = newFiltering.filter((value, _index, _array) => {
+        return (
+          value.photoDetails?.pictureDate.getTime()! >
+          filteringOptions.dateRangeStart?.toDate("EST").getTime()!
+        );
+      });
+    }
+
+    if (filteringOptions.dateRangeEnd) {
+      newFiltering = newFiltering.filter((value, _index, _array) => {
+        return (
+          value.photoDetails?.pictureDate.getTime()! <
+          filteringOptions.dateRangeEnd?.toDate("EST").getTime()!
         );
       });
     }
@@ -141,7 +165,21 @@ export default function PhotoGrid({
             <SelectItem key={objectType}>{objectType}</SelectItem>
           ))}
         </Select>
-        <DateRangePicker label="Photo Date Range" />
+        <DateRangePicker
+          label="Photo Date Range"
+          visibleMonths={3}
+          value={{
+            start: filteringOptions.dateRangeStart!,
+            end: filteringOptions.dateRangeEnd!,
+          }}
+          onChange={(e) => {
+            setFilteringOptions({
+              ...filteringOptions,
+              dateRangeStart: e?.start || undefined,
+              dateRangeEnd: e?.end || undefined,
+            });
+          }}
+        />
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredPictures.map((data) => {

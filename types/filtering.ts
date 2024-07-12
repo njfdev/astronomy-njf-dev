@@ -1,3 +1,5 @@
+import { CalendarDate } from "@internationalized/date";
+
 export enum ObjectType {
   Galaxy = "Galaxy",
   Nebula = "Nebula",
@@ -27,6 +29,6 @@ export interface FilteringOptions {
   objectTypes: ObjectType[];
   sortOption: SortOption;
   catalogs: Catalog[];
-  dateRangeStart?: Date;
-  dateRangeEnd?: Date;
+  dateRangeStart?: CalendarDate;
+  dateRangeEnd?: CalendarDate;
 }

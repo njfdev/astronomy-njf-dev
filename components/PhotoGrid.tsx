@@ -55,6 +55,8 @@ export default function PhotoGrid({
   const updateFiltering = () => {
     let newFiltering = [...pictureData];
 
+    console.log(filteringOptions.objectTypes);
+
     if (filteringOptions.objectTypes.length > 0) {
       newFiltering = newFiltering.filter((value, _index, _array) => {
         return filteringOptions.objectTypes.includes(
@@ -163,7 +165,9 @@ export default function PhotoGrid({
             onChange={(e) => {
               setFilteringOptions({
                 ...filteringOptions,
-                objectTypes: e.target.value.split(",") as ObjectType[],
+                objectTypes: (e.target.value.split(",") as ObjectType[]).filter(
+                  (s) => s
+                ),
               });
             }}
           >
@@ -178,7 +182,9 @@ export default function PhotoGrid({
             onChange={(e) => {
               setFilteringOptions({
                 ...filteringOptions,
-                catalogs: e.target.value.split(",") as Catalog[],
+                catalogs: (e.target.value.split(",") as Catalog[]).filter(
+                  (s) => s
+                ),
               });
             }}
           >

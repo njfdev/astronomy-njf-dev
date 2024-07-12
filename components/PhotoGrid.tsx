@@ -139,10 +139,7 @@ export default function PhotoGrid({
             Reset Filters
           </Button>
         </div>
-        <div
-          className="w-full flex gap-2 mb-4
-                     *:w-0 *:grow"
-        >
+        <div className="w-full grid gap-2 mb-4 xl:grid-cols-4 sm:grid-cols-2 grid-cols-1">
           <Select
             label="Sort"
             selectedKeys={[filteringOptions.sortOption]}

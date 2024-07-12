@@ -9,8 +9,8 @@ export enum ObjectType {
 }
 
 export enum SortOption {
-  DateAscending = "Old -> New",
   DateDescending = "New -> Old",
+  DateAscending = "Old -> New",
   AlphabeticallyAscending = "A -> Z",
   AlphabeticallyDescending = "Z -> A",
 }
@@ -21,4 +21,12 @@ export enum Catalog {
   IC = "Index Catalogue (IC)",
   SH2 = "Sharpless Catalog (SH2)",
   Other = "Other",
+}
+
+export interface FilteringOptions {
+  objectTypes: ObjectType[];
+  sortOption: SortOption;
+  catalogs: Catalog[];
+  dateRangeStart?: Date;
+  dateRangeEnd?: Date;
 }

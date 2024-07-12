@@ -2,7 +2,7 @@
 
 import PhotoCard from "@/components/PhotoCard";
 import { DateRangePicker, Select, SelectItem } from "@nextui-org/react";
-import { ObjectType, SortOptions } from "@/types/filtering";
+import { Catalog, ObjectType, SortOption } from "@/types/filtering";
 
 export default function PhotoGrid({
   children,
@@ -13,14 +13,22 @@ export default function PhotoGrid({
 }) {
   return (
     <>
-      <div className="w-full flex">
+      <div
+        className="w-full flex gap-2 mb-4
+                     *:w-0 *:grow"
+      >
         <Select label="Sort">
-          {Object.values(SortOptions).map((sortOption: string) => (
+          {Object.values(SortOption).map((sortOption: string) => (
             <SelectItem key={sortOption}>{sortOption}</SelectItem>
           ))}
         </Select>
         <Select label="Object Type" selectionMode="multiple">
           {Object.values(ObjectType).map((objectType: string) => (
+            <SelectItem key={objectType}>{objectType}</SelectItem>
+          ))}
+        </Select>
+        <Select label="Catalogs" selectionMode="multiple">
+          {Object.values(Catalog).map((objectType: string) => (
             <SelectItem key={objectType}>{objectType}</SelectItem>
           ))}
         </Select>

@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={`${inter.className} prose dark:prose-invert max-w-none`}>
         <Script
           defer={true}
-          src="https://umami.njf.dev/script.js"
+          src="/stats/script.js"
           data-website-id="26321b22-2c40-4dd8-98b5-a56369df6a0b"
         ></Script>
         <Providers>

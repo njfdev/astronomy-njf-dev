@@ -1,11 +1,22 @@
 "use client";
 
 import { PhotoDetails } from "@/types/metadata";
-import { formatDuration } from "@/utils/timeTransformations";
-import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
+import {
+  formatDuration,
+  formatDurationToShortForm,
+} from "@/utils/timeTransformations";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Chip,
+} from "@nextui-org/react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { use, useEffect, useState } from "react";
+import { FaStopwatch } from "react-icons/fa6";
+import { IoTelescope } from "react-icons/io5";
 
 export default function PhotoCard({
   children,
@@ -25,17 +36,53 @@ export default function PhotoCard({
       as={pageUrl ? NextLink : undefined}
       href={pageUrl}
       isPressable={!!pageUrl}
-      className={`h-[36rem] px-2 ${
+      className={`aspect-square border-none ${
         pageUrl ? "hover:decoration-inherit decoration-transparent" : ""
       }`}
+      isFooterBlurred={true}
     >
-      <CardHeader className="pb-0 pt-2 flex flex-col">
-        <h2 className="text-2xl font-bold text-center w-full mb-0 mt-8">
+      <CardHeader className="flex-col items-start gap-1 p-2">
+        <Chip
+          startContent={<IoTelescope className="text-secondary-700" />}
+          variant="solid"
+          radius="sm"
+          classNames={{
+            base: "bg-secondary/70",
+            content: "text-secondary-700",
+          }}
+        >
+          {photoDetails.telescopeName}
+        </Chip>
+        {photoDetails.exposureTime && (
+          <Chip
+            startContent={<FaStopwatch className="text-success-700" />}
+            variant="solid"
+            radius="sm"
+            classNames={{
+              base: "bg-success/70",
+              content: "text-success-700",
+            }}
+          >
+            {formatDurationToShortForm(photoDetails.exposureTime)}
+          </Chip>
+        )}
+      </CardHeader>
+      <Image
+        src={`/astrophotos/${photoDetails.pictureFolder}/${photoDetails.objectName}%20-%20Final.jpg`}
+        alt={`Image of the ${
+          photoDetails.objectDetails.name || photoDetails.objectName
+        }`}
+        fill={true}
+        className="rounded-lg object-cover mt-0"
+      />
+      <CardFooter className="justify-between absolute flex-col bottom-1 mx-1 w-[calc(100%_-_8px)] rounded-lg border-white/20 border-1 overflow-hidden">
+        <h2 className="text-2xl font-bold text-center w-full mt-0 mb-0">
           {photoDetails.objectDetails.name &&
           photoDetails.objectDetails.name != photoDetails.objectName
             ? `${photoDetails.objectDetails.name} (${photoDetails.objectName})`
             : photoDetails.objectName}
         </h2>
+        {/*
         <p className="text-center text-sm dark:text-gray-300 text-gray-700 mb-2">
           Shot on a {photoDetails.telescopeName}
           {photoDetails.timeIsSpecified
@@ -52,19 +99,7 @@ export default function PhotoCard({
             )}`}
           .
         </p>
-      </CardHeader>
-      <CardBody className="overflow-visible py-2">
-        <Image
-          src={`/astrophotos/${photoDetails.pictureFolder}/${photoDetails.objectName}%20-%20Final.jpg`}
-          alt={`Image of the ${
-            photoDetails.objectDetails.name || photoDetails.objectName
-          }`}
-          fill={true}
-          className="rounded-lg object-cover"
-        />
-      </CardBody>
-      <CardFooter>
-        <div className="mt-4">{children}</div>
+        */}
       </CardFooter>
     </Card>
   );

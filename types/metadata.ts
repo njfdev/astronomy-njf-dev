@@ -1,9 +1,16 @@
+import { ObjectType } from "./filtering";
+
 export interface PhotoDetails {
   timeIsSpecified: boolean;
-  objectReadableName: string;
   telescopeName: string;
   exposureTime: string;
   objectName: string;
   pictureDate: Date;
   pictureFolder: string;
+  objectDetails: ObjectDetails;
+}
+
+export interface ObjectDetails {
+  name: string;
+  objectType: ObjectType;
 }

@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import moment from "moment-timezone";
 import { removeOuterQuotes } from "@/utils/textTransformations";
 import { PhotoDetails } from "@/types/metadata";
+import { objectInfo } from "@/utils/objectInfo";
 
 interface PictureData {
   folder: string;
@@ -41,6 +42,14 @@ export default function PhotoGrid({
 
   const updateFiltering = () => {
     let newFiltering = [...pictureData];
+
+    if (filteringOptions.objectTypes.length > 0) {
+      newFiltering = newFiltering.filter((value, index, array) => {
+        return filteringOptions.objectTypes.includes(
+          value.photoDetails?.objectDetails.objectType!
+        );
+      });
+    }
 
     switch (filteringOptions.sortOption as SortOption) {
       case SortOption.DateAscending:
@@ -84,7 +93,17 @@ export default function PhotoGrid({
             <SelectItem key={sortOption}>{sortOption}</SelectItem>
           ))}
         </Select>
-        <Select label="Object Type" selectionMode="multiple">
+        <Select
+          label="Object Type"
+          selectionMode="multiple"
+          selectedKeys={filteringOptions.objectTypes}
+          onChange={(e) => {
+            setFilteringOptions({
+              ...filteringOptions,
+              objectTypes: e.target.value.split(",") as ObjectType[],
+            });
+          }}
+        >
           {Object.values(ObjectType).map((objectType: string) => (
             <SelectItem key={objectType}>{objectType}</SelectItem>
           ))}
@@ -141,23 +160,21 @@ function getPhotoDetails(pictureFolder: string): PhotoDetails {
     }
   }
 
-  const objectReadableName = require(`../public/object_to_name.json`)[
-    objectName
-  ];
-
   const telescopeName =
     removeOuterQuotes(photoData["TELESCOP"]?.[0]) || "Seestar S50";
 
   const exposureTime = removeOuterQuotes(photoData["LIVETIME"]?.[0]);
 
+  let objectDetails = objectInfo[objectName as keyof typeof objectInfo];
+
   return {
     timeIsSpecified,
-    objectReadableName,
     telescopeName,
     exposureTime,
     objectName,
     pictureFolder,
     pictureDate,
+    objectDetails,
   };
 }
 
@@ -170,9 +187,9 @@ function getDateDifference(a: PictureData, b: PictureData) {
 
 function getNameDifference(a: PictureData, b: PictureData) {
   let a_name =
-    a.photoDetails?.objectReadableName || a.photoDetails?.objectName!;
+    a.photoDetails?.objectDetails.name || a.photoDetails?.objectName!;
   let b_name =
-    b.photoDetails?.objectReadableName || b.photoDetails?.objectName!;
+    b.photoDetails?.objectDetails.name || b.photoDetails?.objectName!;
 
   if (a_name < b_name!) {
     return -1;

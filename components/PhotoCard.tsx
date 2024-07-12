@@ -31,8 +31,9 @@ export default function PhotoCard({
     >
       <CardHeader className="pb-0 pt-2 flex flex-col">
         <h2 className="text-2xl font-bold text-center w-full mb-0 mt-8">
-          {photoDetails.objectReadableName
-            ? `${photoDetails.objectReadableName} (${photoDetails.objectName})`
+          {photoDetails.objectDetails.name &&
+          photoDetails.objectDetails.name != photoDetails.objectName
+            ? `${photoDetails.objectDetails.name} (${photoDetails.objectName})`
             : photoDetails.objectName}
         </h2>
         <p className="text-center text-sm dark:text-gray-300 text-gray-700 mb-2">
@@ -56,7 +57,7 @@ export default function PhotoCard({
         <Image
           src={`/astrophotos/${photoDetails.pictureFolder}/${photoDetails.objectName}%20-%20Final.jpg`}
           alt={`Image of the ${
-            photoDetails.objectReadableName || photoDetails.objectName
+            photoDetails.objectDetails.name || photoDetails.objectName
           }`}
           fill={true}
           className="rounded-lg object-cover"

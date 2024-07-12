@@ -44,10 +44,28 @@ export default function PhotoGrid({
     let newFiltering = [...pictureData];
 
     if (filteringOptions.objectTypes.length > 0) {
-      newFiltering = newFiltering.filter((value, index, array) => {
+      newFiltering = newFiltering.filter((value, _index, _array) => {
         return filteringOptions.objectTypes.includes(
           value.photoDetails?.objectDetails.objectType!
         );
+      });
+    }
+
+    if (filteringOptions.catalogs.length > 0) {
+      newFiltering = newFiltering.filter((value, _index, _array) => {
+        let catalog = Catalog.Other;
+
+        if (value.photoDetails?.objectName.startsWith("M")) {
+          catalog = Catalog.Messier;
+        } else if (value.photoDetails?.objectName.startsWith("NGC")) {
+          catalog = Catalog.NGC;
+        } else if (value.photoDetails?.objectName.startsWith("IC")) {
+          catalog = Catalog.IC;
+        } else if (value.photoDetails?.objectName.startsWith("SH2")) {
+          catalog = Catalog.SH2;
+        }
+
+        return filteringOptions.catalogs.includes(catalog);
       });
     }
 
@@ -108,7 +126,17 @@ export default function PhotoGrid({
             <SelectItem key={objectType}>{objectType}</SelectItem>
           ))}
         </Select>
-        <Select label="Catalogs" selectionMode="multiple">
+        <Select
+          label="Catalogs"
+          selectionMode="multiple"
+          selectedKeys={filteringOptions.catalogs}
+          onChange={(e) => {
+            setFilteringOptions({
+              ...filteringOptions,
+              catalogs: e.target.value.split(",") as Catalog[],
+            });
+          }}
+        >
           {Object.values(Catalog).map((objectType: string) => (
             <SelectItem key={objectType}>{objectType}</SelectItem>
           ))}

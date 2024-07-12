@@ -10,8 +10,6 @@ export default function YouTubePlayer({
   autoplay?: boolean;
 }) {
   const opts = {
-    height: "390",
-    width: "640",
     playerVars: {
       autoplay: autoplay ? 1 : 0,
     },
@@ -21,6 +19,7 @@ export default function YouTubePlayer({
     <YouTube
       videoId={videoId}
       opts={opts}
+      className="max-w-[36rem] *:w-full *:aspect-video"
       onReady={(event) => event.target.pauseVideo()}
     />
   );

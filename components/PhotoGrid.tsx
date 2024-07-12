@@ -2,18 +2,7 @@
 
 import PhotoCard from "@/components/PhotoCard";
 import { DateRangePicker, Select, SelectItem } from "@nextui-org/react";
-
-// TODO: remove this temporary variable
-const objectTypes: string[] = [
-  "Galaxy",
-  "Nebula",
-  "Star Cluster",
-  "Lunar",
-  "Solar",
-  "Eclipse",
-];
-
-const sortOptions: string[] = ["Old -> New", "New -> Old", "A -> Z", "Z -> A"];
+import { ObjectType, SortOptions } from "@/types/filtering";
 
 export default function PhotoGrid({
   children,
@@ -26,12 +15,12 @@ export default function PhotoGrid({
     <>
       <div className="w-full flex">
         <Select label="Sort">
-          {sortOptions.map((sortOption: string) => (
+          {Object.values(SortOptions).map((sortOption: string) => (
             <SelectItem key={sortOption}>{sortOption}</SelectItem>
           ))}
         </Select>
         <Select label="Object Type" selectionMode="multiple">
-          {objectTypes.map((objectType: string) => (
+          {Object.values(ObjectType).map((objectType: string) => (
             <SelectItem key={objectType}>{objectType}</SelectItem>
           ))}
         </Select>

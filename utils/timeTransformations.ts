@@ -21,9 +21,13 @@ export function formatDuration(secondsString: string) {
 export function formatDurationToShortForm(secondsString: string) {
   if (!secondsString) return secondsString;
 
-  let seconds = Math.floor(parseFloat(secondsString));
+  let seconds = Math.floor(parseFloat(secondsString) * 10) / 10;
   let hours = Math.floor(seconds / 360) / 10;
-  let minutes = Math.floor(seconds / 60);
+  let minutes = Math.floor(seconds / 6) / 10;
+
+  if (seconds >= 10) seconds = Math.floor(seconds);
+  if (minutes >= 10) minutes = Math.floor(minutes);
+  if (hours >= 10) hours = Math.floor(hours);
 
   if (hours >= 1) {
     return `${hours} ${hours == 1 ? "hr" : "hrs"}`;

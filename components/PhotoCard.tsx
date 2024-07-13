@@ -27,10 +27,6 @@ export default function PhotoCard({
   photoDetails: PhotoDetails;
   pageUrl?: string;
 }) {
-  /*timeIsSpecified
-    ? pictureDate.toLocaleString()
-    : pictureDate.toLocaleDateString();*/
-
   return (
     <Card
       as={pageUrl ? NextLink : undefined}

@@ -231,7 +231,10 @@ function getPhotoDetails(pictureFolder: string): PhotoDetails {
 
   const objectName = pictureFolder.split("/")[0];
   const folderDate = moment
-    .tz(pictureFolder.split("/")[1].split("_")[0], "America/New_York")
+    .tz(
+      pictureFolder.split("/")[1].split("_")[0].split(" ")[0],
+      "America/New_York"
+    )
     .toDate();
 
   const photoData = require(`../public/astrophotos/${pictureFolder}/${objectName}\ -\ Final.json`);

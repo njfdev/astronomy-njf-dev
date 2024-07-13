@@ -49,5 +49,9 @@ export default function getPhotoDetails(pictureFolder: string): PhotoDetails {
     pictureFolder,
     pictureDate,
     objectDetails,
+    dimensions: {
+      width: photoData["width"]!,
+      height: photoData["height"]!,
+    },
   };
 }

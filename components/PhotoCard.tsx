@@ -11,12 +11,16 @@ import {
   CardBody,
   CardFooter,
   Chip,
+  Modal,
+  ModalContent,
+  ModalBody,
 } from "@nextui-org/react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { use, useEffect, useState } from "react";
 import { FaStopwatch } from "react-icons/fa6";
 import { IoTelescope } from "react-icons/io5";
+import PhotoInfoModal from "./PhotoInfoModal";
 
 export default function PhotoCard({
   children,
@@ -27,20 +31,16 @@ export default function PhotoCard({
   photoDetails: PhotoDetails;
   pageUrl?: string;
 }) {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <Card
-      as={NextLink}
-      href={
-        pageUrl ||
-        "/astrophotos/" +
-          photoDetails.pictureFolder +
-          "/" +
-          photoDetails.objectName +
-          " - Final.jpg"
-      }
       isPressable={true}
       className={`aspect-square border-none decoration-transparent hover:scale-105`}
       isFooterBlurred={true}
+      onPress={() => {
+        setModalOpen(true);
+      }}
     >
       <CardHeader className="flex-col items-start gap-1 p-2">
         <Chip
@@ -85,25 +85,17 @@ export default function PhotoCard({
             ? `${photoDetails.objectDetails.name} (${photoDetails.objectName})`
             : photoDetails.objectName}
         </h2>
-        {/*
-        <p className="text-center text-sm dark:text-gray-300 text-gray-700 mb-2">
-          Shot on a {photoDetails.telescopeName}
-          {photoDetails.timeIsSpecified
-            ? photoDetails.exposureTime
-              ? " starting at "
-              : " at "
-            : " on "}
-          {photoDetails.timeIsSpecified
-            ? photoDetails.pictureDate.toLocaleString()
-            : photoDetails.pictureDate.toLocaleDateString()}
-          {photoDetails.exposureTime &&
-            ` with an exposure time of ${formatDuration(
-              photoDetails.exposureTime
-            )}`}
-          .
-        </p>
-        */}
       </CardFooter>
+
+      <Modal
+        size="4xl"
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+      >
+        <ModalContent>
+          <PhotoInfoModal photoDetails={photoDetails} />
+        </ModalContent>
+      </Modal>
     </Card>
   );
 }

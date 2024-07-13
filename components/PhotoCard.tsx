@@ -29,12 +29,17 @@ export default function PhotoCard({
 }) {
   return (
     <Card
-      as={pageUrl ? NextLink : undefined}
-      href={pageUrl}
-      isPressable={!!pageUrl}
-      className={`aspect-square border-none ${
-        pageUrl ? "hover:decoration-inherit decoration-transparent" : ""
-      }`}
+      as={NextLink}
+      href={
+        pageUrl ||
+        "/astrophotos/" +
+          photoDetails.pictureFolder +
+          "/" +
+          photoDetails.objectName +
+          " - Final.jpg"
+      }
+      isPressable={true}
+      className={`aspect-square border-none decoration-transparent hover:scale-105`}
       isFooterBlurred={true}
     >
       <CardHeader className="flex-col items-start gap-1 p-2">

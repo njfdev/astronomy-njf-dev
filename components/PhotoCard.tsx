@@ -21,6 +21,7 @@ import { use, useEffect, useState } from "react";
 import { FaStopwatch } from "react-icons/fa6";
 import { IoTelescope } from "react-icons/io5";
 import PhotoInfoModal from "./PhotoInfoModal";
+import { PiHandTapBold } from "react-icons/pi";
 
 export default function PhotoCard({
   children,
@@ -42,7 +43,7 @@ export default function PhotoCard({
         setModalOpen(true);
       }}
     >
-      <CardHeader className="flex-col items-start gap-1 p-2">
+      <CardHeader className="flex-col items-start gap-1 p-2 h-full">
         <Chip
           startContent={<IoTelescope className="text-secondary-700" />}
           variant="solid"
@@ -67,6 +68,12 @@ export default function PhotoCard({
             {formatDurationToShortForm(photoDetails.exposureTime)}
           </Chip>
         )}
+
+        <div className="grow" />
+
+        <div className="relative place-self-end mb-[18px] mr-[18px]">
+          <PiHandTapBold className="text-gray-300 mix-blend-difference absolute" />
+        </div>
       </CardHeader>
       <Image
         src={`/astrophotos/${photoDetails.pictureFolder}/${photoDetails.objectName}%20-%20Final.jpg`}
@@ -79,7 +86,7 @@ export default function PhotoCard({
         quality={65}
       />
       <CardFooter className="justify-between absolute flex-col bottom-1 mx-1 w-[calc(100%_-_8px)] rounded-lg border-white/20 border-1 overflow-hidden">
-        <h2 className="text-2xl font-bold text-center w-full mt-0 mb-0">
+        <h2 className="text-2xl font-bold text-center w-full mt-0 mb-0 px-2">
           {photoDetails.objectDetails.name &&
           photoDetails.objectDetails.name != photoDetails.objectName
             ? `${photoDetails.objectDetails.name} (${photoDetails.objectName})`

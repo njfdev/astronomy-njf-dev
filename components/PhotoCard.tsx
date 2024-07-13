@@ -75,6 +75,8 @@ export default function PhotoCard({
         }`}
         fill={true}
         className="rounded-lg object-cover mt-0"
+        // this can reduce the image size by ~80% (tested with 1 moon image)
+        quality={65}
       />
       <CardFooter className="justify-between absolute flex-col bottom-1 mx-1 w-[calc(100%_-_8px)] rounded-lg border-white/20 border-1 overflow-hidden">
         <h2 className="text-2xl font-bold text-center w-full mt-0 mb-0">

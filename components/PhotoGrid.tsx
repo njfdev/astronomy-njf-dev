@@ -124,7 +124,7 @@ export default function PhotoGrid({
     <>
       <div className="flex flex-col w-full">
         <div className="flex justify-between mb-1 items-center">
-          <span className="mt-0 mb-0 font-bold text-xl text-white">
+          <span className="mt-0 mb-0 font-bold text-xl text-default-foreground">
             Filters
           </span>
           <Button

@@ -45,24 +45,28 @@ export default function PhotoCard({
     >
       <CardHeader className="flex-col items-start gap-1 p-2 h-full">
         <Chip
-          startContent={<IoTelescope className="text-secondary-700" />}
+          startContent={
+            <IoTelescope className="text-secondary-100 dark:text-secondary-700" />
+          }
           variant="solid"
           radius="sm"
           classNames={{
-            base: "bg-secondary/70",
-            content: "text-secondary-700",
+            base: "bg-secondary-400/70 dark:bg-secondary/70",
+            content: "text-secondary-100 dark:text-secondary-700",
           }}
         >
           {photoDetails.telescopeName}
         </Chip>
         {photoDetails.exposureTime && (
           <Chip
-            startContent={<FaStopwatch className="text-success-700" />}
+            startContent={
+              <FaStopwatch className="text-success-100 dark:text-success-700" />
+            }
             variant="solid"
             radius="sm"
             classNames={{
-              base: "bg-success/70",
-              content: "text-success-700",
+              base: "bg-success-500/70 dark:bg-success/70",
+              content: "text-success-100 dark:text-success-700",
             }}
           >
             {formatDurationToShortForm(photoDetails.exposureTime)}
@@ -86,7 +90,7 @@ export default function PhotoCard({
         quality={65}
       />
       <CardFooter className="justify-between absolute flex-col bottom-1 mx-1 w-[calc(100%_-_8px)] rounded-lg border-white/20 border-1 overflow-hidden">
-        <h2 className="text-2xl font-bold text-center w-full mt-0 mb-0 px-2">
+        <h2 className="text-2xl font-bold text-center text-white w-full mt-0 mb-0 px-2">
           {photoDetails.objectDetails.name &&
           photoDetails.objectDetails.name != photoDetails.objectName
             ? `${photoDetails.objectDetails.name} (${photoDetails.objectName})`

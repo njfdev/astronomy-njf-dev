@@ -14,6 +14,11 @@ export interface PhotoDetails {
   };
 }
 
+export interface PictureData {
+  folder: string;
+  photoDetails: PhotoDetails;
+}
+
 export interface ObjectDetails {
   name: string;
   objectType: ObjectType;

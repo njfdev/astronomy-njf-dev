@@ -1,9 +1,23 @@
-import { PhotoDetails } from "@/types/metadata";
+import { PhotoDetails, PictureData } from "@/types/metadata";
 import moment from "moment-timezone";
 import { removeOuterQuotes } from "./textTransformations";
 import { objectInfo } from "./objectInfo";
+import imagesToUseList from "@/public/images_to_use.json";
 
-export default function getPhotoDetails(pictureFolder: string): PhotoDetails {
+export function getAllPhotos(): PictureData[] {
+  let pictureData: PictureData[] = [];
+
+  imagesToUseList.forEach((folder: string) => {
+    pictureData.push({
+      folder,
+      photoDetails: getPhotoDetails(folder),
+    });
+  });
+
+  return pictureData;
+}
+
+export function getPhotoDetails(pictureFolder: string): PhotoDetails {
   let timeIsSpecified = false;
 
   const objectName = pictureFolder.split("/")[0];

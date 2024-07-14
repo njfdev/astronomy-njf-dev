@@ -17,17 +17,12 @@ import {
 import { useEffect, useState } from "react";
 import moment from "moment-timezone";
 import { removeOuterQuotes } from "@/utils/textTransformations";
-import { PhotoDetails } from "@/types/metadata";
+import { PhotoDetails, PictureData } from "@/types/metadata";
 import { objectInfo } from "@/utils/objectInfo";
 import { parseDate } from "@internationalized/date";
 import { FaFilterCircleXmark } from "react-icons/fa6";
-import getPhotoDetails from "@/utils/photos";
+import { getAllPhotos } from "@/utils/photos";
 import imagesToUseList from "@/public/images_to_use.json";
-
-interface PictureData {
-  folder: string;
-  photoDetails: PhotoDetails;
-}
 
 const defaultFilteringOptions: FilteringOptions = {
   sortOption: SortOption.DateDescending,
@@ -36,14 +31,7 @@ const defaultFilteringOptions: FilteringOptions = {
 };
 
 export default function PhotoGrid({ children }: { children: React.ReactNode }) {
-  let pictureData: PictureData[] = [];
-
-  imagesToUseList.forEach((folder: string) => {
-    pictureData.push({
-      folder,
-      photoDetails: getPhotoDetails(folder),
-    });
-  });
+  const pictureData = getAllPhotos();
 
   const [filteringOptions, setFilteringOptions] = useState<FilteringOptions>(
     defaultFilteringOptions

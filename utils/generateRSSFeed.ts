@@ -2,10 +2,12 @@
 
 import fs from "fs";
 import { Feed, FeedOptions } from "feed";
-import { getAllPhotos } from "./photos";
+import { getAllPhotos, sortPhotos } from "./photos";
+import { SortOption } from "@/types/filtering";
 
 export default async function generateRssFeed() {
-  const allPictures = getAllPhotos();
+  const allPictures = sortPhotos(getAllPhotos(), SortOption.DateDescending);
+
   const site_url = process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : "http://localhost:3000";

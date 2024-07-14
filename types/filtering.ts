@@ -13,6 +13,8 @@ export enum ObjectType {
 export enum SortOption {
   DateDescending = "New -> Old",
   DateAscending = "Old -> New",
+  CatalogAscending = "1 -> 9 (Catalog Number)",
+  CatalogDescending = "9 -> 1 (Catalog Number)",
   AlphabeticallyAscending = "A -> Z",
   AlphabeticallyDescending = "Z -> A",
 }

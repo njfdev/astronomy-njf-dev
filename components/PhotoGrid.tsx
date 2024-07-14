@@ -23,6 +23,10 @@ import { parseDate } from "@internationalized/date";
 import { FaFilterCircleXmark } from "react-icons/fa6";
 import { getAllPhotos } from "@/utils/photos";
 import imagesToUseList from "@/public/images_to_use.json";
+import {
+  extractCatalogString,
+  extractCatalogNumber,
+} from "@/utils/catalogDesignations";
 
 const defaultFilteringOptions: FilteringOptions = {
   sortOption: SortOption.DateDescending,
@@ -93,6 +97,12 @@ export default function PhotoGrid({ children }: { children: React.ReactNode }) {
         break;
       case SortOption.DateDescending:
         newFiltering.sort((a, b) => getDateDifference(b, a));
+        break;
+      case SortOption.CatalogAscending:
+        newFiltering.sort((a, b) => getCatalogNumberDifference(a, b, false));
+        break;
+      case SortOption.CatalogDescending:
+        newFiltering.sort((a, b) => getCatalogNumberDifference(a, b, true));
         break;
       case SortOption.AlphabeticallyAscending:
         newFiltering.sort((a, b) => getNameDifference(a, b));
@@ -233,6 +243,61 @@ function getNameDifference(a: PictureData, b: PictureData) {
   }
   if (a_name! > b_name!) {
     return 1;
+  }
+  return 0;
+}
+
+function getCatalogNumberDifference(
+  a: PictureData,
+  b: PictureData,
+  reverse?: boolean
+) {
+  let a_name = a.photoDetails.catalogName;
+  let b_name = b.photoDetails.catalogName;
+
+  let a_number, b_number;
+  let a_catalog = extractCatalogString(a_name);
+  let b_catalog = extractCatalogString(b_name);
+
+  let a_has_number =
+    a.photoDetails.catalogName != a.photoDetails.objectDetails.name;
+  let b_has_number =
+    b.photoDetails.catalogName != b.photoDetails.objectDetails.name;
+
+  try {
+    a_number = extractCatalogNumber(a_name);
+  } catch {
+    a_has_number = false;
+  }
+
+  try {
+    b_number = extractCatalogNumber(b_name);
+  } catch {
+    b_has_number = false;
+  }
+
+  // filter objects without a catalog number last (e.g. Sun, Jupiter)
+  if (!a_has_number && !b_has_number) return 0;
+  if (!a_has_number && b_has_number) return 1;
+  if (!b_has_number && a_has_number) return -1;
+
+  let same_catalog = a_catalog == b_catalog;
+
+  if (!same_catalog) {
+    if (a_name! < b_name!) {
+      return reverse ? 1 : -1;
+    }
+    if (a_name! > b_name!) {
+      return reverse ? -1 : 1;
+    }
+    return 0;
+  }
+
+  if (a_number! < b_number!) {
+    return reverse ? 1 : -1;
+  }
+  if (a_number! > b_number!) {
+    return reverse ? -1 : 1;
   }
   return 0;
 }

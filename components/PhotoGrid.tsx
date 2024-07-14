@@ -56,8 +56,6 @@ export default function PhotoGrid({
   const updateFiltering = () => {
     let newFiltering = [...pictureData];
 
-    console.log(filteringOptions.objectTypes);
-
     if (filteringOptions.objectTypes.length > 0) {
       newFiltering = newFiltering.filter((value, _index, _array) => {
         return filteringOptions.objectTypes.includes(

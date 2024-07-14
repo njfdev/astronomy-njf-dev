@@ -1,19 +1,26 @@
 "use client";
 
-import ReactPlayer from "react-player";
+import YouTube from "react-youtube";
 
-export default function YouTubePlayer({ videoId }: { videoId: string }) {
+export default function YouTubePlayer({
+  videoId,
+  autoplay = false,
+}: {
+  videoId: string;
+  autoplay?: boolean;
+}) {
+  const opts = {
+    playerVars: {
+      autoplay: autoplay ? 1 : 0,
+    },
+  };
+
   return (
-    <ReactPlayer
-      url={`https://www.youtube.com/watch?v=${videoId}`}
-      className="max-w-[36rem] *:w-full *:aspect-video"
-      config={{
-        youtube: {
-          embedOptions: {
-            host: "https://www.youtube-nocookie.com",
-          },
-        },
-      }}
+    <YouTube
+      videoId={videoId}
+      opts={opts}
+      className="max-w-[36rem] *:w-full aspect-video *:aspect-video"
+      onReady={(event: any) => event.target.pauseVideo()}
     />
   );
 }

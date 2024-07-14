@@ -22,11 +22,11 @@ import { objectInfo } from "@/utils/objectInfo";
 import { parseDate } from "@internationalized/date";
 import { FaFilterCircleXmark } from "react-icons/fa6";
 import getPhotoDetails from "@/utils/photos";
+import imagesToUseList from "@/public/images_to_use.json";
 
 interface PictureData {
   folder: string;
-  pageUrl?: string;
-  photoDetails?: PhotoDetails;
+  photoDetails: PhotoDetails;
 }
 
 const defaultFilteringOptions: FilteringOptions = {
@@ -35,15 +35,14 @@ const defaultFilteringOptions: FilteringOptions = {
   objectTypes: [],
 };
 
-export default function PhotoGrid({
-  children,
-  pictureData,
-}: {
-  children: React.ReactNode;
-  pictureData: PictureData[];
-}) {
-  pictureData.forEach((picture) => {
-    picture.photoDetails = getPhotoDetails(picture.folder);
+export default function PhotoGrid({ children }: { children: React.ReactNode }) {
+  let pictureData: PictureData[] = [];
+
+  imagesToUseList.forEach((folder: string) => {
+    pictureData.push({
+      folder,
+      photoDetails: getPhotoDetails(folder),
+    });
   });
 
   const [filteringOptions, setFilteringOptions] = useState<FilteringOptions>(
@@ -213,11 +212,7 @@ export default function PhotoGrid({
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredPictures.map((data) => {
           return (
-            <PhotoCard
-              key={data.folder}
-              photoDetails={data.photoDetails!}
-              pageUrl={data.pageUrl}
-            >
+            <PhotoCard key={data.folder} photoDetails={data.photoDetails!}>
               {children}
             </PhotoCard>
           );

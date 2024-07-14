@@ -26,11 +26,9 @@ import { PiHandTapBold } from "react-icons/pi";
 export default function PhotoCard({
   children,
   photoDetails,
-  pageUrl,
 }: {
   children: React.ReactNode;
   photoDetails: PhotoDetails;
-  pageUrl?: string;
 }) {
   const [isModalOpen, setModalOpen] = useState(false);
 

@@ -195,7 +195,7 @@ export default function PhotoGrid({
           </Select>
           <DateRangePicker
             label="Photo Date Range"
-            visibleMonths={3}
+            visibleMonths={1}
             value={{
               start: filteringOptions.dateRangeStart!,
               end: filteringOptions.dateRangeEnd!,

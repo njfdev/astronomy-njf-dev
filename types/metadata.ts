@@ -8,6 +8,10 @@ export interface PhotoDetails {
   pictureDate: Date;
   pictureFolder: string;
   objectDetails: ObjectDetails;
+  dimensions: {
+    width: number;
+    height: number;
+  };
 }
 
 export interface ObjectDetails {

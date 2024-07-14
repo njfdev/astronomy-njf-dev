@@ -1,8 +1,1 @@
-{
-  "INSTRUME": ["'Seestar S50'", "instrument name"],
-  "TELESCOP": ["'Seestar S50'", "telescope used to acquire this image"],
-  "DATE-OBS": [
-    "'2024-01-21T17:56:43.000000-5:00'",
-    "YYYY-MM-DDThh:mm:ss observation start,"
-  ]
-}
+{"INSTRUME":["'Seestar S50'","instrument name"],"TELESCOP":["'Seestar S50'","telescope used to acquire this image"],"DATE-OBS":["'2024-01-21T17:56:43.000000-5:00'","YYYY-MM-DDThh:mm:ss observation start,"],"width":3384,"height":5832}

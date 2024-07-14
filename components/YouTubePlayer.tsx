@@ -19,8 +19,8 @@ export default function YouTubePlayer({
     <YouTube
       videoId={videoId}
       opts={opts}
-      className="max-w-[36rem] *:w-full *:aspect-video"
-      onReady={(event) => event.target.pauseVideo()}
+      className="max-w-[36rem] *:w-full aspect-video *:aspect-video"
+      onReady={(event: any) => event.target.pauseVideo()}
     />
   );
 }

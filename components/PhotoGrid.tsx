@@ -21,6 +21,7 @@ import { PhotoDetails } from "@/types/metadata";
 import { objectInfo } from "@/utils/objectInfo";
 import { parseDate } from "@internationalized/date";
 import { FaFilterCircleXmark } from "react-icons/fa6";
+import getPhotoDetails from "@/utils/photos";
 
 interface PictureData {
   folder: string;
@@ -54,8 +55,6 @@ export default function PhotoGrid({
 
   const updateFiltering = () => {
     let newFiltering = [...pictureData];
-
-    console.log(filteringOptions.objectTypes);
 
     if (filteringOptions.objectTypes.length > 0) {
       newFiltering = newFiltering.filter((value, _index, _array) => {
@@ -125,7 +124,9 @@ export default function PhotoGrid({
     <>
       <div className="flex flex-col w-full">
         <div className="flex justify-between mb-1 items-center">
-          <h3 className="mt-0 mb-0">Filters</h3>
+          <span className="mt-0 mb-0 font-bold text-xl text-default-foreground">
+            Filters
+          </span>
           <Button
             variant="light"
             className={`text-red-600 dark:text-red-400 transition-opacity ${
@@ -194,7 +195,7 @@ export default function PhotoGrid({
           </Select>
           <DateRangePicker
             label="Photo Date Range"
-            visibleMonths={3}
+            visibleMonths={1}
             value={{
               start: filteringOptions.dateRangeStart!,
               end: filteringOptions.dateRangeEnd!,
@@ -224,52 +225,6 @@ export default function PhotoGrid({
       </div>
     </>
   );
-}
-
-function getPhotoDetails(pictureFolder: string): PhotoDetails {
-  let timeIsSpecified = false;
-
-  const objectName = pictureFolder.split("/")[0];
-  const folderDate = moment
-    .tz(pictureFolder.split("/")[1].split("_")[0], "America/New_York")
-    .toDate();
-
-  const photoData = require(`../public/astrophotos/${pictureFolder}/${objectName}\ -\ Final.json`);
-
-  let pictureDate = folderDate;
-
-  if (photoData["DATE-OBS"]) {
-    const dateObs = removeOuterQuotes(photoData["DATE-OBS"]?.[0]);
-    const dateObsUTC = new Date(dateObs + "Z");
-    if (
-      dateObsUTC.toLocaleDateString("en-US", {
-        timeZone: "America/New_York",
-      }) ===
-      folderDate.toLocaleDateString("en-US", {
-        timeZone: "America/New_York",
-      })
-    ) {
-      pictureDate = new Date(dateObs + "Z");
-      timeIsSpecified = true;
-    }
-  }
-
-  const telescopeName =
-    removeOuterQuotes(photoData["TELESCOP"]?.[0]) || "Seestar S50";
-
-  const exposureTime = removeOuterQuotes(photoData["LIVETIME"]?.[0]);
-
-  let objectDetails = objectInfo[objectName as keyof typeof objectInfo];
-
-  return {
-    timeIsSpecified,
-    telescopeName,
-    exposureTime,
-    objectName,
-    pictureFolder,
-    pictureDate,
-    objectDetails,
-  };
 }
 
 function getDateDifference(a: PictureData, b: PictureData) {

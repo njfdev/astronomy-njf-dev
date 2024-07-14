@@ -27,10 +27,12 @@ export default async function generateRssFeed() {
 
   allPictures.forEach((picture) => {
     feed.addItem({
-      title: picture.photoDetails.objectDetails.name,
-      id: `${site_url}/astrophotos/${picture.folder}/${picture.photoDetails.objectName} - Final.jpg`,
-      link: `${site_url}/astrophotos/${picture.folder}/${picture.photoDetails.objectName} - Final.jpg`,
+      title: picture.photoDetails.readableName,
+      id: `${picture.folder}`,
+      link: `${site_url}${picture.photoDetails.imagePath}`,
+      image: `${site_url}${picture.photoDetails.imagePath}`,
       date: new Date(picture.photoDetails.pictureDate),
+      description: picture.photoDetails.readableDetailsString,
     });
   });
 

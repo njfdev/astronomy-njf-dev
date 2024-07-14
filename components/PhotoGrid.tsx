@@ -73,13 +73,13 @@ export default function PhotoGrid({ children }: { children: React.ReactNode }) {
       newFiltering = newFiltering.filter((value, _index, _array) => {
         let catalog = Catalog.Other;
 
-        if (value.photoDetails?.objectName.startsWith("M")) {
+        if (value.photoDetails?.catalogName.startsWith("M")) {
           catalog = Catalog.Messier;
-        } else if (value.photoDetails?.objectName.startsWith("NGC")) {
+        } else if (value.photoDetails?.catalogName.startsWith("NGC")) {
           catalog = Catalog.NGC;
-        } else if (value.photoDetails?.objectName.startsWith("IC")) {
+        } else if (value.photoDetails?.catalogName.startsWith("IC")) {
           catalog = Catalog.IC;
-        } else if (value.photoDetails?.objectName.startsWith("SH2")) {
+        } else if (value.photoDetails?.catalogName.startsWith("SH2")) {
           catalog = Catalog.SH2;
         }
 
@@ -219,9 +219,9 @@ function getDateDifference(a: PictureData, b: PictureData) {
 
 function getNameDifference(a: PictureData, b: PictureData) {
   let a_name =
-    a.photoDetails?.objectDetails.name || a.photoDetails?.objectName!;
+    a.photoDetails?.objectDetails.name || a.photoDetails?.catalogName!;
   let b_name =
-    b.photoDetails?.objectDetails.name || b.photoDetails?.objectName!;
+    b.photoDetails?.objectDetails.name || b.photoDetails?.catalogName!;
 
   if (a_name < b_name!) {
     return -1;

@@ -3,6 +3,7 @@ import moment from "moment-timezone";
 import { removeOuterQuotes } from "./textTransformations";
 import { objectInfo } from "./objectInfo";
 import imagesToUseList from "@/public/images_to_use.json";
+import { formatDuration } from "./timeTransformations";
 
 export function getAllPhotos(): PictureData[] {
   let pictureData: PictureData[] = [];
@@ -20,7 +21,7 @@ export function getAllPhotos(): PictureData[] {
 export function getPhotoDetails(pictureFolder: string): PhotoDetails {
   let timeIsSpecified = false;
 
-  const objectName = pictureFolder.split("/")[0];
+  const catalogName = pictureFolder.split("/")[0];
   const folderDate = moment
     .tz(
       pictureFolder.split("/")[1].split("_")[0].split(" ")[0],
@@ -28,7 +29,7 @@ export function getPhotoDetails(pictureFolder: string): PhotoDetails {
     )
     .toDate();
 
-  const photoData = require(`../public/astrophotos/${pictureFolder}/${objectName}\ -\ Final.json`);
+  const photoData = require(`../public/astrophotos/${pictureFolder}/${catalogName}\ -\ Final.json`);
 
   let pictureDate = folderDate;
 
@@ -53,16 +54,36 @@ export function getPhotoDetails(pictureFolder: string): PhotoDetails {
 
   const exposureTime = removeOuterQuotes(photoData["LIVETIME"]?.[0]);
 
-  let objectDetails = objectInfo[objectName as keyof typeof objectInfo];
+  let objectDetails = objectInfo[catalogName as keyof typeof objectInfo];
+
+  let imagePath = `/astrophotos/${pictureFolder}/${catalogName} - Final.jpg`;
+  let readableName =
+    objectDetails.name +
+    (objectDetails.name != catalogName ? ` (${catalogName})` : "");
+
+  let readableDetailsString = `Shot on a ${telescopeName}${
+    timeIsSpecified ? (exposureTime ? " starting at " : " at ") : " on "
+  }${
+    timeIsSpecified
+      ? pictureDate.toLocaleString()
+      : pictureDate.toLocaleDateString()
+  }${
+    exposureTime
+      ? ` with an exposure time of ${formatDuration(exposureTime)}`
+      : ""
+  }.`;
 
   return {
     timeIsSpecified,
     telescopeName,
     exposureTime,
-    objectName,
+    catalogName,
     pictureFolder,
     pictureDate,
+    imagePath,
     objectDetails,
+    readableName,
+    readableDetailsString,
     dimensions: {
       width: photoData["width"]!,
       height: photoData["height"]!,

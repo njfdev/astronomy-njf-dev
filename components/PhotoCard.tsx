@@ -98,8 +98,9 @@ export default function PhotoCard({
         size="4xl"
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
+        scrollBehavior="inside"
       >
-        <ModalContent>
+        <ModalContent className="overflow-clip">
           <PhotoInfoModal photoDetails={photoDetails} />
         </ModalContent>
       </Modal>

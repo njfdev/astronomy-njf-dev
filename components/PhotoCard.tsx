@@ -26,11 +26,9 @@ import { PiHandTapBold } from "react-icons/pi";
 export default function PhotoCard({
   children,
   photoDetails,
-  pageUrl,
 }: {
   children: React.ReactNode;
   photoDetails: PhotoDetails;
-  pageUrl?: string;
 }) {
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -80,9 +78,9 @@ export default function PhotoCard({
         </div>
       </CardHeader>
       <Image
-        src={`/astrophotos/${photoDetails.pictureFolder}/${photoDetails.objectName}%20-%20Final.jpg`}
+        src={photoDetails.imagePath}
         alt={`Image of the ${
-          photoDetails.objectDetails.name || photoDetails.objectName
+          photoDetails.objectDetails.name || photoDetails.catalogName
         }`}
         fill={true}
         className="rounded-lg object-cover mt-0"
@@ -91,10 +89,7 @@ export default function PhotoCard({
       />
       <CardFooter className="justify-between absolute flex-col bottom-1 mx-1 w-[calc(100%_-_8px)] rounded-lg border-white/20 border-1 overflow-hidden">
         <h2 className="text-2xl font-bold text-center text-white w-full mt-0 mb-0 px-2">
-          {photoDetails.objectDetails.name &&
-          photoDetails.objectDetails.name != photoDetails.objectName
-            ? `${photoDetails.objectDetails.name} (${photoDetails.objectName})`
-            : photoDetails.objectName}
+          {photoDetails.readableName}
         </h2>
       </CardFooter>
 

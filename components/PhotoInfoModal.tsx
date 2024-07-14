@@ -12,8 +12,6 @@ export default function PhotoInfoModal({
 }) {
   const [isLoading, setLoading] = useState(true);
 
-  let imagePath = `/astrophotos/${photoDetails.pictureFolder}/${photoDetails.objectName} - Final.jpg`;
-
   return (
     <>
       <ModalBody className="p-0">
@@ -24,7 +22,7 @@ export default function PhotoInfoModal({
             </div>
           )}
           <Image
-            src={imagePath}
+            src={photoDetails.imagePath}
             width={photoDetails.dimensions.width!}
             height={photoDetails.dimensions.height!}
             quality={100}
@@ -34,27 +32,9 @@ export default function PhotoInfoModal({
           />
         </div>
         <div className="px-6 pb-4 pt-2">
-          <h2 className="my-0">
-            {photoDetails.objectDetails.name &&
-            photoDetails.objectDetails.name != photoDetails.objectName
-              ? `${photoDetails.objectDetails.name} (${photoDetails.objectName})`
-              : photoDetails.objectName}
-          </h2>
+          <h2 className="my-0">{photoDetails.readableName}</h2>
           <p className=" dark:text-gray-300 text-gray-700 my-0">
-            Shot on a {photoDetails.telescopeName}
-            {photoDetails.timeIsSpecified
-              ? photoDetails.exposureTime
-                ? " starting at "
-                : " at "
-              : " on "}
-            {photoDetails.timeIsSpecified
-              ? photoDetails.pictureDate.toLocaleString()
-              : photoDetails.pictureDate.toLocaleDateString()}
-            {photoDetails.exposureTime &&
-              ` with an exposure time of ${formatDuration(
-                photoDetails.exposureTime
-              )}`}
-            .
+            {photoDetails.readableDetailsString}
           </p>
         </div>
       </ModalBody>

@@ -17,17 +17,16 @@ import {
 import { useEffect, useState } from "react";
 import moment from "moment-timezone";
 import { removeOuterQuotes } from "@/utils/textTransformations";
-import { PhotoDetails } from "@/types/metadata";
+import { PhotoDetails, PictureData } from "@/types/metadata";
 import { objectInfo } from "@/utils/objectInfo";
 import { parseDate } from "@internationalized/date";
 import { FaFilterCircleXmark } from "react-icons/fa6";
-import getPhotoDetails from "@/utils/photos";
-
-interface PictureData {
-  folder: string;
-  pageUrl?: string;
-  photoDetails?: PhotoDetails;
-}
+import { getAllPhotos, sortPhotos } from "@/utils/photos";
+import imagesToUseList from "@/public/images_to_use.json";
+import {
+  extractCatalogString,
+  extractCatalogNumber,
+} from "@/utils/catalogDesignations";
 
 const defaultFilteringOptions: FilteringOptions = {
   sortOption: SortOption.DateDescending,
@@ -35,22 +34,14 @@ const defaultFilteringOptions: FilteringOptions = {
   objectTypes: [],
 };
 
-export default function PhotoGrid({
-  children,
-  pictureData,
-}: {
-  children: React.ReactNode;
-  pictureData: PictureData[];
-}) {
-  pictureData.forEach((picture) => {
-    picture.photoDetails = getPhotoDetails(picture.folder);
-  });
+export default function PhotoGrid({ children }: { children: React.ReactNode }) {
+  const pictureData = getAllPhotos();
 
   const [filteringOptions, setFilteringOptions] = useState<FilteringOptions>(
     defaultFilteringOptions
   );
   const [filteredPictures, setFilteredPictures] = useState<PictureData[]>(
-    [...pictureData].sort((a, b) => getDateDifference(b, a))
+    sortPhotos(pictureData, defaultFilteringOptions.sortOption)
   );
 
   const updateFiltering = () => {
@@ -86,13 +77,13 @@ export default function PhotoGrid({
       newFiltering = newFiltering.filter((value, _index, _array) => {
         let catalog = Catalog.Other;
 
-        if (value.photoDetails?.objectName.startsWith("M")) {
+        if (value.photoDetails?.catalogName.startsWith("M")) {
           catalog = Catalog.Messier;
-        } else if (value.photoDetails?.objectName.startsWith("NGC")) {
+        } else if (value.photoDetails?.catalogName.startsWith("NGC")) {
           catalog = Catalog.NGC;
-        } else if (value.photoDetails?.objectName.startsWith("IC")) {
+        } else if (value.photoDetails?.catalogName.startsWith("IC")) {
           catalog = Catalog.IC;
-        } else if (value.photoDetails?.objectName.startsWith("SH2")) {
+        } else if (value.photoDetails?.catalogName.startsWith("SH2")) {
           catalog = Catalog.SH2;
         }
 
@@ -100,20 +91,7 @@ export default function PhotoGrid({
       });
     }
 
-    switch (filteringOptions.sortOption as SortOption) {
-      case SortOption.DateAscending:
-        newFiltering.sort((a, b) => getDateDifference(a, b));
-        break;
-      case SortOption.DateDescending:
-        newFiltering.sort((a, b) => getDateDifference(b, a));
-        break;
-      case SortOption.AlphabeticallyAscending:
-        newFiltering.sort((a, b) => getNameDifference(a, b));
-        break;
-      case SortOption.AlphabeticallyDescending:
-        newFiltering.sort((a, b) => getNameDifference(b, a));
-        break;
-    }
+    newFiltering = sortPhotos(newFiltering, filteringOptions.sortOption);
 
     setFilteredPictures(newFiltering);
   };
@@ -122,7 +100,7 @@ export default function PhotoGrid({
 
   return (
     <>
-      <div className="flex flex-col w-full">
+      <div className="w-full">
         <div className="flex justify-between mb-1 items-center">
           <span className="mt-0 mb-0 font-bold text-xl text-default-foreground">
             Filters
@@ -210,14 +188,15 @@ export default function PhotoGrid({
           />
         </div>
       </div>
+      {filteredPictures.length == 0 && (
+        <div className="flex align-middle items-center justify-center h-[12rem]">
+          <span>No results!</span>
+        </div>
+      )}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredPictures.map((data) => {
           return (
-            <PhotoCard
-              key={data.folder}
-              photoDetails={data.photoDetails!}
-              pageUrl={data.pageUrl}
-            >
+            <PhotoCard key={data.folder} photoDetails={data.photoDetails!}>
               {children}
             </PhotoCard>
           );
@@ -225,26 +204,4 @@ export default function PhotoGrid({
       </div>
     </>
   );
-}
-
-function getDateDifference(a: PictureData, b: PictureData) {
-  return (
-    a.photoDetails?.pictureDate.getTime()! -
-    b.photoDetails?.pictureDate.getTime()!
-  );
-}
-
-function getNameDifference(a: PictureData, b: PictureData) {
-  let a_name =
-    a.photoDetails?.objectDetails.name || a.photoDetails?.objectName!;
-  let b_name =
-    b.photoDetails?.objectDetails.name || b.photoDetails?.objectName!;
-
-  if (a_name < b_name!) {
-    return -1;
-  }
-  if (a_name! > b_name!) {
-    return 1;
-  }
-  return 0;
 }

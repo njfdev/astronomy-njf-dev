@@ -2,24 +2,34 @@ import { PhotoDetails } from "@/types/metadata";
 import { formatDuration } from "@/utils/timeTransformations";
 import { ModalBody, ModalFooter, ModalHeader } from "@nextui-org/react";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { TailSpin } from "react-loader-spinner";
 
 export default function PhotoInfoModal({
   photoDetails,
 }: {
   photoDetails: PhotoDetails;
 }) {
+  const [isLoading, setLoading] = useState(true);
+
   let imagePath = `/astrophotos/${photoDetails.pictureFolder}/${photoDetails.objectName} - Final.jpg`;
 
   return (
     <>
       <ModalBody className="p-0">
-        <div className="bg-black">
+        <div className="grid *:row-start-1 *:col-start-1 bg-black">
+          {isLoading && (
+            <div className="w-full flex items-center align-middle justify-center">
+              <TailSpin width={60} height={60} color="white" />
+            </div>
+          )}
           <Image
             src={imagePath}
             width={photoDetails.dimensions.width!}
             height={photoDetails.dimensions.height!}
             quality={100}
             alt=""
+            onLoad={() => setLoading(false)}
             className="overflow-visible w-full my-0 object-contain lg:max-h-[36rem] max-h-[48rem]"
           />
         </div>

@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="800" src="https://cloud-28cwc35kv-hack-club-bot.vercel.app/0screenshot_2024-09-05_at_3.46.07___pm.png">
+</p>
+
 # NJF Astronomy
 
 This is the source code for the [NJF Astronomy website](https://astronomy.njf.dev). It is where I share everything I am doing with astronomy and astrophotography. Currently, it is a collection of my astrophotos.

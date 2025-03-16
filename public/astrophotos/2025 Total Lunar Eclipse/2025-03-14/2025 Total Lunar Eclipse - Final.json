@@ -1,0 +1,10 @@
+{
+  "INSTRUME": ["'Seestar S50'", "instrument name"],
+  "TELESCOP": ["'Seestar S50'", "telescope used to acquire this image"],
+  "DATE-OBS": [
+    "'2025-03-14T00:00:00.000000-5:00'",
+    "YYYY-MM-DDThh:mm:ss observation start,"
+  ],
+  "width": 3808,
+  "height": 5560
+}

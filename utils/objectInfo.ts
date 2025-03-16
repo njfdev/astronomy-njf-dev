@@ -9,6 +9,10 @@ export let objectInfo = {
     objectType: ObjectType.Eclipse,
     name: "2024 Penumbral Lunar Eclipse",
   },
+  "2025 Total Lunar Eclipse": {
+    objectType: ObjectType.Eclipse,
+    name: "2025 Total Lunar Eclipse",
+  },
   Moon: { objectType: ObjectType.Lunar, name: "Moon" },
   Sun: { objectType: ObjectType.Solar, name: "Sun" },
   Jupiter: { objectType: ObjectType.Planetary, name: "Jupiter" },

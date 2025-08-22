@@ -20,9 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} prose dark:prose-invert max-w-none`}>
         <Script
+          async={true}
           defer={true}
-          src="/stats/script.js"
-          data-website-id="26321b22-2c40-4dd8-98b5-a56369df6a0b"
+          src="https://lytics.njf.dev/script.js"
+          data-website-id="06f2c901-2220-4ce4-b776-069e7135de6b"
         ></Script>
         <Providers>
           <main className="p-4 max-w-none">{children}</main>

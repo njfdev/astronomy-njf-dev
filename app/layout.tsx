@@ -19,7 +19,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} prose dark:prose-invert max-w-none`}>
-        \
         <Script
           async={true}
           defer={true}

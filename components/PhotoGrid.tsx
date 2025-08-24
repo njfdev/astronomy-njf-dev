@@ -193,7 +193,10 @@ export default function PhotoGrid({ children }: { children: React.ReactNode }) {
           <span>No results!</span>
         </div>
       )}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div
+        id="images"
+        className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
         {filteredPictures.map((data) => {
           return (
             <PhotoCard key={data.folder} photoDetails={data.photoDetails!}>
